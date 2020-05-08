@@ -1,0 +1,279 @@
+<!--<!DOCTYPE html>
+<html>
+  <head>
+    <title>3D Model Showcase</title>
+    <meta name="description" content="Simple setup for showing a 3D model.">
+    <meta name="apple-mobile-web-app-capable">
+    <meta charset="UTF-8">
+    <script
+  src="https://code.jquery.com/jquery-3.3.1.min.js"
+  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+  crossorigin="anonymous"></script>
+    	<script src="https://aframe.io/releases/0.9.0/aframe.min.js"></script>
+	    <script src="https://unpkg.com/aframe-environment-component/dist/aframe-environment-component.min.js"></script>
+	    <script src="https://unpkg.com/aframe-orbit-controls@1.2.0/dist/aframe-orbit-controls.min.js"></script>
+	    <script src="https://unpkg.com/aframe-animation-component@^4.1.1/dist/aframe-animation-timeline-component.min.js"></script>
+	    <script src="https://unpkg.com/aframe-animation-timeline-component@1.6.0/dist/aframe-animation-timeline-component.min.js"></script>
+		<script src="https://unpkg.com/aframe-thumb-controls-component@1.1.0/dist/aframe-thumb-controls-component.min.js"></script>
+	   
+		<script src="https://cdn.rawgit.com/donmccurdy/aframe-extras/v3.13.1/dist/aframe-extras.min.js"></script>
+		<script src="https://aframe.io/releases/0.4.0/aframe.min.js"></script> 
+		<script src="https://rawgit.com/chenzlabs/auto-detect-controllers/master/dist/aframe-auto-detect-controllers-component.min.js"></script> 
+		<script src="https://unpkg.com/aframe-thumb-controls-component@1.1.0/dist/aframe-thumb-controls-component.min.js"></script>
+		
+		<script src="https://cdn.rawgit.com/donmccurdy/aframe-physics-system/v2.1.0/dist/aframe-physics-system.min.js"></script> 
+	  	<script src="https://unpkg.com/super-hands@2.0.2/dist/super-hands.min.js"></script> 
+	  	<script src="https://unpkg.com/aframe-physics-extras@0.1.2/dist/aframe-physics-extras.min.js"></script>
+		<script src="https://unpkg.com/aframe-text-geometry-component@0.5.1/dist/aframe-text-geometry-component.min.js"></script>
+		<script src="https://unpkg.com/aframe-event-set-component@4.0.1/dist/aframe-event-set-component.min.js"></script>
+	 	<script src="https://cdn.rawgit.com/donmccurdy/aframe-extras/v4.2.0/dist/components/sphere-collider.js"></script>
+		<script src="https://cdn.rawgit.com/donmccurdy/aframe-extras/v4.2.0/dist/aframe-extras.controls.js"></script>
+		<script src="https://cdn.rawgit.com/donmccurdy/aframe-extras/v4.2.0/dist/aframe-extras.js"></script>
+		<script src="https://cdn.rawgit.com/donmccurdy/aframe-extras/v4.2.0/dist/aframe-extras.loaders.js"></script>
+		<script src="https://cdn.rawgit.com/donmccurdy/aframe-extras/v4.2.0/dist/aframe-extras.misc.js"></script>
+		<script src="https://cdn.rawgit.com/donmccurdy/aframe-extras/v4.2.0/dist/aframe-extras.pathfinding.js"></script>
+		<script src="https://cdn.rawgit.com/donmccurdy/aframe-extras/v4.2.0/dist/aframe-extras.primitives.js"></script>
+		<script src="https://cdn.rawgit.com/donmccurdy/aframe-extras/v4.2.0/dist/components/grab.js"></script>
+		
+		 <script src="play-all-model-animations.js"></script>
+	    <script src="script.js"></script>
+		<link rel="stylesheet" type="text/css" href="aframe.css">
+
+    <script>
+      
+    </script>
+  </head>
+  <body>
+    <a-scene >
+		<!-- THE CAMERA --
+      <a-entity camera gamepad-controls wasd-controls orbit-controls="target: 0 1 0;  initialPosition: 0 2 5"></a-entity>--
+      <asset>
+	  
+	  </asset>
+		<a-entity></a-entity>
+	     	<a-plane static-body position="0 0 -4" rotation="-90 0 0" width="100" height="100" color="#7BC8A4"></a-plane>
+            <a-sky color="#ECECEC"></a-sky>
+			
+			
+			
+		      <!-- ADD A COUPLE MORE LIGHTS --
+		      <a-light type="ambient" color="#999999"></a-light>
+		      <a-light type="point" intensity="0.5" position="4.5 15 4"></a-light>
+		      
+			            
+            <!--Build three obstacles as static bodies so we can stand on them--
+            <a-box dynamic-body position="-1 0.5 -3" rotation="0 45 0" color="#4CC3D9"></a-box>
+            <a-cylinder dynamic-body position="1 0.75 -3" radius="0.5" height="1.5" color="#FFC65D"></a-cylinder>
+            
+            <!--Build one dynamic body - a soccer ball we can play with--
+            <a-sphere id="theball" dynamic-body position="4 1.25 -5" radius="0.5" color="tomato" mass="1"></a-sphere>
+            
+      		
+			<a-entity class="player" id="player"
+                camera
+                jump-ability
+                universal-controls
+                kinematic-body
+                position="1 4 2">
+            </a-entity>
+			
+			
+			<!--<a-entity>
+				<a-asset-item id="halfcube" src="  "></a-asset-item>
+			</a-entity>
+			
+			
+			
+			
+			
+      
+     <!-- <a-entity gltf-model="#box" 
+                id="box"
+                position="-1 2 1" 
+                scale="0.025 0.025 0.025" 
+                rotation="0 -90 0" 
+                mixin="roll"
+                animation-mixer
+                play-all-model-animations 
+                modify-materials></a-entity>
+      
+      <!-- THE TEXT AT THE TOP OF THE SCENE --
+      <a-text value="Vege Tank" 
+              width="20"
+              align="center" 
+              color="white" 
+              font="aileronsemibold" 
+              position="0 3.75 0"
+              side="double"
+              id="topText">
+			    <a-gui-cursor></a-gui-cursor>
+				<a-gui-button></a-gui-button>
+				<a-gui-icon-button></a-gui-icon-button>	
+				<a-gui-icon-label-button></a-gui-icon-label-button>
+				<a-gui-radio></a-gui-radio>
+				<a-gui-toggle></a-gui-toggle>
+				<a-gui-slider></a-gui-slider>	
+				<a-gui-input></a-gui-input>
+				<a-gui-label></a-gui-label>
+				<a-gui-progress-bar></a-gui-progress-bar>
+				<a-gui-circle-loader></a-gui-circle-loader>
+				<a-gui-circle-timer></a-gui-circle-timer><script src="https://rawgit.com/rdub80/aframe-gui/master/dist/aframe-gui.min.js" ></script>
+			  
+      </a-text>
+      
+      <!-- THE TEXT AT THE BOTTOM OF THE SCENE --
+      <a-text value="CC BY Willy Decarpentrie - https://sketchfab.com/skudgee"
+              width="4" 
+              align="center"
+              color="yellow"
+              font="aileronsemibold"
+              position="0 0.5 2"
+              side="double"
+              id="bottomText">
+      </a-text>
+      --
+      
+    </a-scene>
+  </body>
+</html>
+-->
+<!--
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>glTF Model</title>
+    <meta name="description" content="glTF Model - A-Frame">
+    <script src="js/aframe-master.js"></script>
+    <script src="https://aframe.io/releases/0.7.0/aframe.min.js"></script>
+        <script src="https://cdn.rawgit.com/donmccurdy/aframe-extras/v3.13.1/dist/aframe-extras.min.js"></script>
+		<script src="https://aframe.io/releases/0.4.0/aframe.min.js"></script> 
+		<script src="https://rawgit.com/chenzlabs/auto-detect-controllers/master/dist/aframe-auto-detect-controllers-component.min.js"></script> 
+		<script src="https://unpkg.com/aframe-thumb-controls-component@1.1.0/dist/aframe-thumb-controls-component.min.js"></script>
+		<script src="https://unpkg.com/aframe-environment-component/dist/aframe-environment-component.min.js"></script>
+   
+		<script src="https://cdn.rawgit.com/donmccurdy/aframe-physics-system/v2.1.0/dist/aframe-physics-system.min.js"></script> 
+	  	<script src="https://unpkg.com/super-hands@2.0.2/dist/super-hands.min.js"></script> 
+	  	<script src="https://unpkg.com/aframe-physics-extras@0.1.2/dist/aframe-physics-extras.min.js"></script>
+		<script src="https://unpkg.com/aframe-text-geometry-component@0.5.1/dist/aframe-text-geometry-component.min.js"></script>
+		<script src="https://unpkg.com/aframe-event-set-component@4.0.1/dist/aframe-event-set-component.min.js"></script>
+	 	<script src="https://cdn.rawgit.com/donmccurdy/aframe-extras/v4.2.0/dist/components/sphere-collider.js"></script>
+		<script src="https://cdn.rawgit.com/donmccurdy/aframe-extras/v4.2.0/dist/aframe-extras.controls.js"></script>
+		<script src="https://cdn.rawgit.com/donmccurdy/aframe-extras/v4.2.0/dist/aframe-extras.js"></script>
+		<script src="https://cdn.rawgit.com/donmccurdy/aframe-extras/v4.2.0/dist/aframe-extras.loaders.js"></script>
+		<script src="https://cdn.rawgit.com/donmccurdy/aframe-extras/v4.2.0/dist/aframe-extras.misc.js"></script>
+		<script src="https://cdn.rawgit.com/donmccurdy/aframe-extras/v4.2.0/dist/aframe-extras.pathfinding.js"></script>
+		<script src="https://cdn.rawgit.com/donmccurdy/aframe-extras/v4.2.0/dist/aframe-extras.primitives.js"></script>
+		<script src="https://cdn.rawgit.com/donmccurdy/aframe-extras/v4.2.0/dist/components/grab.js"></script>
+		
+	
+	    <script src="script.js"></script>
+		<link rel="stylesheet" type="text/css" href="aframe.css">
+	
+  </head>
+  <body>
+    <a-scene stats>
+      <a-assets>
+        <a-asset-item id="halfcube" src="  "></a-asset-item>
+      </a-assets>
+
+      <a-entity gltf-model="#halfcube" play-all-model-animations></a-entity>
+    </a-scene>
+  </body>
+</html>
+
+-->
+<!DOCTYPE html>
+<html>
+    <head>
+        <script src="https://aframe.io/releases/0.7.0/aframe.min.js"></script>
+        <script src="https://cdn.rawgit.com/donmccurdy/aframe-extras/v3.13.1/dist/aframe-extras.min.js"></script>
+		<script src="https://aframe.io/releases/0.4.0/aframe.min.js"></script> 
+		<script src="https://rawgit.com/chenzlabs/auto-detect-controllers/master/dist/aframe-auto-detect-controllers-component.min.js"></script> 
+		<script src="https://unpkg.com/aframe-thumb-controls-component@1.1.0/dist/aframe-thumb-controls-component.min.js"></script>
+		<script src="https://unpkg.com/aframe-environment-component/dist/aframe-environment-component.min.js"></script>
+   
+		<script src="https://cdn.rawgit.com/donmccurdy/aframe-physics-system/v2.1.0/dist/aframe-physics-system.min.js"></script> 
+	  	<script src="https://unpkg.com/super-hands@2.0.2/dist/super-hands.min.js"></script> 
+	  	<script src="https://unpkg.com/aframe-physics-extras@0.1.2/dist/aframe-physics-extras.min.js"></script>
+		<script src="https://unpkg.com/aframe-text-geometry-component@0.5.1/dist/aframe-text-geometry-component.min.js"></script>
+		<script src="https://unpkg.com/aframe-event-set-component@4.0.1/dist/aframe-event-set-component.min.js"></script>
+	 	<script src="https://cdn.rawgit.com/donmccurdy/aframe-extras/v4.2.0/dist/components/sphere-collider.js"></script>
+		<script src="https://cdn.rawgit.com/donmccurdy/aframe-extras/v4.2.0/dist/aframe-extras.controls.js"></script>
+		<script src="https://cdn.rawgit.com/donmccurdy/aframe-extras/v4.2.0/dist/aframe-extras.js"></script>
+		<script src="https://cdn.rawgit.com/donmccurdy/aframe-extras/v4.2.0/dist/aframe-extras.loaders.js"></script>
+		<script src="https://cdn.rawgit.com/donmccurdy/aframe-extras/v4.2.0/dist/aframe-extras.misc.js"></script>
+		<script src="https://cdn.rawgit.com/donmccurdy/aframe-extras/v4.2.0/dist/aframe-extras.pathfinding.js"></script>
+		<script src="https://cdn.rawgit.com/donmccurdy/aframe-extras/v4.2.0/dist/aframe-extras.primitives.js"></script>
+		<script src="https://cdn.rawgit.com/donmccurdy/aframe-extras/v4.2.0/dist/components/grab.js"></script>
+		
+	
+	    <script src="script.js"></script>
+		<link rel="stylesheet" type="text/css" href="aframe.css">
+	
+    </head>
+    <body>
+        <a-scene>
+		
+		<a-asset-item id="halfcube" src="https://cdn.jsdelivr.net/gh/vfasteng/glb_models@eacd5ae07f9067e8b49c619562ce2e2cbdd3d103/halfcube.glb"></a-asset-item>-->
+<!--		
+        <a-asset-item id="b1" src="https://cdn.jsdelivr.net/gh/vfasteng/glb_models@e0ea581d4a9615c05b7818c67240c9ed3696970e/b1.glb"></a-asset-item>
+		<a-asset-item id="b2" src="https://cdn.jsdelivr.net/gh/vfasteng/glb_models@e0ea581d4a9615c05b7818c67240c9ed3696970e/b2.glb"></a-asset-item>
+		<a-asset-item id="b3" src="https://cdn.jsdelivr.net/gh/vfasteng/glb_models@74dff725bf286207945e666fbfa4930dd9a0d071/b3.glb"></a-asset-item>
+		<a-asset-item id="b4" src="https://cdn.jsdelivr.net/gh/vfasteng/glb_models@e0ea581d4a9615c05b7818c67240c9ed3696970e/b4.glb"></a-asset-item>
+
+		<a-asset-item id="b1" src="assets/b1.glb"></a-asset-item>
+		<a-asset-item id="b2" src="assets/b2.glb"></a-asset-item>
+		<a-asset-item id="b3" src="assets/b3.glb"></a-asset-item>
+		<a-asset-item id="b4" src="assets/b4.glb"></a-asset-item>
+-->		
+		<a-mixin id="cube" geometry="primitive: box; width: 0.33; height: 0.33; depth: 0.33"
+                 hoverable grabbable stretchable draggable droppable
+                 event-set__hoveron="_event: hover-start; material.opacity: 0.7; transparent: true"
+                 event-set__hoveroff="_event: hover-end; material.opacity: 1; transparent: false"
+                 dynamic-body shadow></a-mixin>
+        </a-mixin>
+
+      </a-assets>
+      	<a-entity gltf-model="#halfcube" static-body position="0 0 0" rotation="90 0 0" scale="1 1 1" color="lightblue"></a-entity>
+		
+		
+			<a-plane static-body rigid-body position="0 0 -4" rotation="-90 0 0" width="100" height="100" depth="0.001" mass="2" color="#7BC8A4"></a-plane>
+            <a-sky color="#ECECEC"></a-sky>
+			
+			
+			
+		      <!-- ADD A COUPLE MORE LIGHTS --
+		      <a-light type="ambient" color="#999999"></a-light>
+		      <a-light type="point" intensity="0.5" position="4.5 15 4"></a-light>
+		      
+			            
+            <!--Build three obstacles as static bodies so we can stand on them-->
+            <a-box dynamic-body position="-1 0.5 -3" rotation="45 45 0" color="brown"></a-box>
+			<a-box dynamic-body position="-1 3.5 -3" rotation="45 45 0" color="red"></a-box>
+			<a-box dynamic-body position="-1 6.5 -3" rotation="45 45 0" color="green"></a-box>
+			<a-box dynamic-body position="-1 9.5 -3" rotation="45 45 0" color="blue"></a-box>
+			<a-box dynamic-body position="-1 12.5 -3" rotation="45 45 0" color="#4CC3D9"></a-box>
+
+            <a-cylinder dynamic-body position="-1 1.5 -3" rotation="45 15 0" radius="0.5" height="1.5" color="blue"></a-cylinder>
+            <a-cylinder dynamic-body position="-1 2.5 -3" rotation="45 35 0" radius="0.5" height="1.5" color="#FFC65D"></a-cylinder>
+            <a-cylinder dynamic-body position="-1 3.5 -3" rotation="45 45 0" radius="0.5" height="1.5" color="brown"></a-cylinder>
+            <a-cylinder dynamic-body position="-1 4.5 -3" rotation="45 55 0" radius="0.5" height="1.5" color="#FFC65D"></a-cylinder>
+            <a-cylinder dynamic-body position="-1 5.5 -3" rotation="45 85 0" radius="0.5" height="1.5" color="purple"></a-cylinder>
+            
+            <!--Build one dynamic body - a soccer ball we can play with-->
+            <a-sphere id="theball" dynamic-body position="4 1.25 -5" radius="0.5" color="tomato" mass="1"></a-sphere>
+            
+      		
+			<!--Make a player/camera entity, and give it the attributes we need it to have in order control camera with mouse, movement with WASD, and jump with spacebar-->
+            <a-entity class="player" id="player"
+                camera
+                jump-ability
+                universal-controls
+                kinematic-body
+                position="1 4 2">
+            </a-entity>
+        </a-scene>
+    </body>
+    <script type="text/javascript" src="script.js"></script>
+</html>
