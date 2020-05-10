@@ -1,11 +1,8 @@
-# Build an A-Frame Game!
+I AM BUILDING A CAE SITE THAT WILL AMAZE YOU!
 
-This project template uses Don McCurdy's a-frame extras. 
+CAD, ANIMATIONS, JOINTS AND 3D-MODEL ASSEMBLY.
 
-Donmccurdy's extras:
-https://github.com/donmccurdy/aframe-extras
 
-His documentation is pretty good. Read it there. 
 
 
 
